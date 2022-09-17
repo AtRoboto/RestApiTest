@@ -12,14 +12,14 @@ import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 
-public class RestAssuredApiTest {
+public class RestAssuredBasicApiTest {
 
 	@Test
 	public void getBookDetails()
 	{
 		// Specify the base URL to the RESTful web service 
-		//RestAssured.baseURI = "https://demoqa.com/BookStore/v1/Books"; 
-        RestAssured.baseURI = "https://demoqa.com/Account/v1/User/"; // Error
+		RestAssured.baseURI = "https://demoqa.com/BookStore/v1/Books"; 
+       // RestAssured.baseURI = "https://demoqa.com/Account/v1/User/"; // Error
 
 		
 		// Get the RequestSpecification of the request to be sent to the server. 
@@ -27,7 +27,7 @@ public class RestAssuredApiTest {
 		
 		// specify the method type (GET) and the parameters if any. 
 		//In this case the request does not take any parameters 
-		//Response response = httpRequest.get(""); // hort-hand methods provided by Rest Assured
+		//Response response = httpRequest.get(""); // short-hand methods provided by Rest Assured
 		Response response = httpRequest.request(Method.GET,"");
 		//Response response = httpRequest.request(Method.GET,"test"); // Used for error in uri
 
@@ -45,7 +45,8 @@ public class RestAssuredApiTest {
 	
 	@Test 
 	public void IteratingHeaders() 
-	{ RestAssured.baseURI = "https://demoqa.com/BookStore/v1/Books"; 
+	{ 
+	 RestAssured.baseURI = "https://demoqa.com/BookStore/v1/Books"; 
 	 RequestSpecification httpRequest = RestAssured.given(); 
 	 Response response = httpRequest.get(""); 
 	 // Get all the headers and then iterate over allHeaders to print each header 
@@ -155,6 +156,24 @@ public class RestAssuredApiTest {
 
 		// Print Wind Direction Degree
 		System.out.println("City received from Response " + jsonPathEvaluator.get("WindDirectionDegree"));
+	}
+	
+	@Test
+	public void queryParameter() {
+		//Defining the base URI
+		RestAssured.baseURI= "https://bookstore.toolsqa.com/BookStore/v1";
+		RequestSpecification httpRequest = RestAssured.given();
+		//Passing the resource details
+		Response res = httpRequest.queryParam("ISBN","9781449325862").get("/Book");
+		//Retrieving the response body using getBody() method
+		ResponseBody body = res.body();
+		//Converting the response body to string object
+		String rbdy = body.asString();
+		//Creating object of JsonPath and passing the string response body as parameter
+		JsonPath jpath = new JsonPath(rbdy);
+		//Storing publisher name in a string variable
+		String title = jpath.getString("title");
+		System.out.println("The book title is - "+title);
 	}
 
 }

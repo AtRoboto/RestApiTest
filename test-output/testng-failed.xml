@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="ApiTesting.RestAssuredTest.RestAssuredApiTest">
+      <class name="allMethods.GetMethods">
         <methods>
-          <include name="DisplayAllNodesInWeatherAPI"/>
+          <include name="get1"/>
         </methods>
-      </class> <!-- ApiTesting.RestAssuredTest.RestAssuredApiTest -->
+      </class> <!-- allMethods.GetMethods -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

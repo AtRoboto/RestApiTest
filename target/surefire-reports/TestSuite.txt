@@ -1,4 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.145 s - in TestSuite
+Tests run: 8, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 9.848 s <<< FAILURE! - in TestSuite
+DisplayAllNodesInWeatherAPI(ApiTesting.RestAssuredTest.RestAssuredApiTest)  Time elapsed: 2.97 s  <<< FAILURE!
+java.net.UnknownHostException: No such host is known (restapi.demoqa.com)
+	at ApiTesting.RestAssuredTest.RestAssuredApiTest.DisplayAllNodesInWeatherAPI(RestAssuredApiTest.java:136)
+
+VerifyCityInJsonResponse(ApiTesting.RestAssuredTest.RestAssuredApiTest)  Time elapsed: 0.014 s  <<< FAILURE!
+java.net.UnknownHostException: restapi.demoqa.com
+	at ApiTesting.RestAssuredTest.RestAssuredApiTest.VerifyCityInJsonResponse(RestAssuredApiTest.java:116)
+
+WeatherMessageBody(ApiTesting.RestAssuredTest.RestAssuredApiTest)  Time elapsed: 0.02 s  <<< FAILURE!
+java.net.UnknownHostException: restapi.demoqa.com
+	at ApiTesting.RestAssuredTest.RestAssuredApiTest.WeatherMessageBody(RestAssuredApiTest.java:96)
+
